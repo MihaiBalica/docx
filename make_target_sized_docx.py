@@ -63,7 +63,7 @@ def build_png_bytes(width: int, height: int, seed: int) -> bytes:
         raw[p] = 0  # filter 0
         p += 1
         for _ in range(width * 3):
-            raw[p] = rng.randrange(0, 512)
+            raw[p] = rng.randrange(0, 256)
             p += 1
     # zlib compress with level 0 (stored blocks): predictable size ~ raw + small overhead
     idat = zlib.compress(bytes(raw), level=0)
