@@ -2,7 +2,7 @@ Option Explicit
 
 ' === User options ===
 Private Const TARGET_COUNT As Long = 5000   ' how many PNGs to insert
-Private Const BATCH_SAVE As Long = 25       ' save every N images (tune for stability/speed)
+Private Const BATCH_SAVE As Long = 50       ' save every N images (tune for stability/speed)
 Private Const PAGE_BREAK_EACH As Boolean = True ' insert a page break after each image
 
 ' Entry point with prompts (folder picker + optional A4 setup)
