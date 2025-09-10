@@ -7,13 +7,19 @@ def create_big_text_file(filename, size, unit='GB'):
     size_bytes = int(size * units.get(unit.upper(), units['GB']))
     chars = string.ascii_letters + string.digits + ".,<>/?;\'\\:\"|[]{}=+-_!@#$%^&*(), "
     line_length = 75
+    batch_size = 100
 
     with open(filename, 'w', encoding='utf-8') as f:
         written = 0
         while written < size_bytes:
-            line = ''.join(random.choices(chars, k=line_length)) + '\n'
-            f.write(line)
-            written += len(line)
+            lines = []
+            for _ in range(batch_size):
+                line = ''.join(random.choices(chars, k=line_length)) + '\n'
+                lines.append(line)
+                written += len(line)
+                if written >= size_bytes:
+                    break
+            f.writelines(lines)
 
 if __name__ == '__main__':
     import argparse
