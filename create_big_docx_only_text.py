@@ -129,7 +129,7 @@ def write_document_xml_stream(zf: zipfile.ZipFile,
 
     zi = zipfile.ZipInfo(entry_name)
     zi.compress_type = zipfile.ZIP_STORED
-    with zf.open(zi, mode="w") as w:
+    with zf.open(zi, mode="w", force_zip64=True) as w:
         # head
         w.write(DOC_HEAD)
         written = len(DOC_HEAD)
